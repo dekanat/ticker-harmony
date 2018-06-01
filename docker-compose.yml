@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+
+  lenses:
+    image: landoop/kafka-lenses-dev
+    ports:
+      - "3030:3030"
+      - "9092:9092"
+      - "2181:2181"
+      - "8081:8081"
+      - "9581:9581"
+      - "9582:9582"
+      - "9584:9584"
+      - "9585:9585"
+    environment:
+      - ADV_HOST=127.0.0.1
+      #- SAMPLEDATA=0
+      #- DISABLE=azure-documentdb,coap,druid,ftp,hazelcast,hbase,influxdb,jms,kudu,rethink,voltdb,yahoo,hdfs,jdbc,twitter
+    volumes:
+      - ./containers/lenses/license.json:/license.json
+    network_mode: host
